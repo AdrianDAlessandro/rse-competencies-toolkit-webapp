@@ -6,7 +6,7 @@ authors = [
     { name = "Adrian D'Alessandro", email = "a.dalessandro@imperial.ac.uk" },
 ]
 requires-python = ">=3.12"
-dependencies = ["django"]
+dependencies = ["django", "whitenoise"]
 
 [project.optional-dependencies]
 dev = [
@@ -44,13 +44,14 @@ warn_unreachable = true
 warn_unused_ignores = true
 disallow_untyped_defs = true
 exclude = [".venv/", "docs/", "manage.py"]
+plugins = ["mypy_django_plugin.main"]
 
 [[tool.mypy.overrides]]
 module = "tests.*"
 disallow_untyped_defs = false
 
 [tool.pytest.ini_options]
-addopts = "-v -p no:warnings --cov=rse_competencies_toolkit --cov-report=html --doctest-modules --ignore=rse_competencies_toolkit/__main__.py --ignore=docs"
+addopts = "-v -p no:warnings --cov=rse_competencies_toolkit --cov-report=html --doctest-modules --ignore=rse_competencies_toolkit/__main__.py --ignore=docs --ignore=rse_competencies_toolkit/settings/"
 
 [tool.ruff]
 target-version = "py312"
@@ -71,3 +72,6 @@ pydocstyle.convention = "google"
     "D100",
     "D104",
 ] # Missing docstring in public module, Missing docstring in public package
+
+[tool.django-stubs]
+django_settings_module = "rse_competencies_toolkit.settings"

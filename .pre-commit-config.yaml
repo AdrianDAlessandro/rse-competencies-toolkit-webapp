@@ -28,6 +28,8 @@ repos:
     rev: v1.10.0
     hooks:
       - id: mypy
+        exclude: manage.py
+        additional_dependencies: ['django-stubs[compatible-mypy]']
   - repo: https://github.com/igorshubovych/markdownlint-cli
     rev: v0.40.0
     hooks:

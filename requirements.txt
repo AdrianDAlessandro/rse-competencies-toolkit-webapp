@@ -12,3 +12,5 @@ sqlparse==0.5.1
     # via django
 tzdata==2024.2
     # via django
+whitenoise==6.7.0
+    # via rse_competencies_toolkit (pyproject.toml)
